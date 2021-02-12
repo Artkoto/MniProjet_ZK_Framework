@@ -61,7 +61,25 @@ public class ArtistesInfos {
         return evens;
     }
 
-    @Override
+    /**
+     * ajouter une salle à la liste
+     * @param salle ,
+     */
+    public void add (Salle salle) {
+        salles.add(salle);
+        salle.add(this);
+    }
+
+    /**
+     * ajouter un evenement à la liste
+     * @param even ,
+     */
+    public void add (Even even){
+        evens.add(even);
+        even.add(this);
+    }
+
+        @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ArtistesInfos)) return false;
