@@ -56,12 +56,12 @@ public class Even  implements Comparable<Even>{
         if (this == o) return true;
         if (!(o instanceof Even)) return false;
         Even even = (Even) o;
-        return name.equals(even.name);
+        return name.equalsIgnoreCase(even.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name.toLowerCase());
     }
 
     @Override

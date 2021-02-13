@@ -86,12 +86,12 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
         if (this == o) return true;
         if (!(o instanceof ArtistesInfos)) return false;
         ArtistesInfos that = (ArtistesInfos) o;
-        return nameInfo.equals(that.nameInfo);
+        return nameInfo.equalsIgnoreCase(that.nameInfo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nameInfo);
+        return Objects.hash(nameInfo.toLowerCase());
     }
 
     @Override
@@ -111,7 +111,7 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
     public boolean contientEven(String even) {
         String evenMiniscule = even.toLowerCase();
         for (Even e : evens){
-            if(e.getName().toLowerCase().equals(even))
+            if(e.getName().toLowerCase().equals(evenMiniscule))
                 return true;
         }
         return false;

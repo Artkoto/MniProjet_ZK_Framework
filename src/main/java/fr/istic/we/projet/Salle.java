@@ -53,12 +53,12 @@ public class Salle implements Comparable<Salle>{
         if (this == o) return true;
         if (!(o instanceof Salle)) return false;
         Salle salle = (Salle) o;
-        return name.equals(salle.name);
+        return name.equalsIgnoreCase(salle.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name.toLowerCase());
     }
 
     @Override
