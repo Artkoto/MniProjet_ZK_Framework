@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Even {
+public class Even  implements Comparable<Even>{
     private String name;
     private List<ArtistesInfos> artistes ;
     private List <Salle> salles;
@@ -23,6 +23,7 @@ public class Even {
      */
     public void add (Salle salle){
         salles.add(salle);
+        if (!salle.getEvens().contains(this))
         salle.add(this);
     }
 
@@ -61,5 +62,10 @@ public class Even {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public int compareTo(Even evnB) {
+        return  (getName().compareTo(evnB.getName()));
     }
 }

@@ -1,11 +1,13 @@
 package fr.istic.we.projet;
 
+import org.zkoss.zul.A;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /*représente un champ artiste aves ses infotmation*/
-public class ArtistesInfos {
+public class ArtistesInfos implements Comparable<ArtistesInfos> {
 
     private String spotifyInfo;
     private String deezerInfo;
@@ -90,5 +92,29 @@ public class ArtistesInfos {
     @Override
     public int hashCode() {
         return Objects.hash(nameInfo);
+    }
+
+    @Override
+    public int compareTo(ArtistesInfos artistesB) {
+        return  (getNameInfo().compareTo(artistesB.getNameInfo()));
+    }
+
+    public boolean contientSall(String salle) {
+        String salleMiniscule = salle.toLowerCase();
+        for (Salle s : salles){
+            if(s.getName().toLowerCase().equals(salleMiniscule))
+                return true;
+        }
+        return false;
+
+    }
+    public boolean contientEven(String even) {
+        String evenMiniscule = even.toLowerCase();
+        for (Even e : evens){
+            if(e.getName().toLowerCase().equals(even))
+                return true;
+        }
+        return false;
+
     }
 }

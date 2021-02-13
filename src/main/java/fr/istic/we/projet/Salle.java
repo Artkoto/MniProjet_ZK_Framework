@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Salle {
+public class Salle implements Comparable<Salle>{
 
     private String name;
     private List<ArtistesInfos> artistes ;
@@ -16,12 +16,14 @@ public class Salle {
         evens = new ArrayList<>();
     }
 
+
     /**
      * ajouter un evenement à la liste
      * @param even ,
      */
     public void add (Even even){
         evens.add(even);
+        if (!even.getSalles().contains(this))
         even.add(this);
     }
 
@@ -31,6 +33,7 @@ public class Salle {
      */
     public void add (ArtistesInfos artistesInfos){
         artistes.add(artistesInfos);
+
     }
 
     public String getName() {
@@ -39,6 +42,10 @@ public class Salle {
 
     public List<ArtistesInfos> getArtistes() {
         return artistes;
+    }
+
+    public List<Even> getEvens() {
+        return evens;
     }
 
     @Override
@@ -52,5 +59,10 @@ public class Salle {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    @Override
+    public int compareTo(Salle salleB) {
+        return  (getName().compareTo(salleB.getName())) ;
     }
 }
