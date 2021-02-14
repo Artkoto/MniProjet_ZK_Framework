@@ -8,13 +8,12 @@ public class Even  implements Comparable<Even>{
     private String name;
     private List<ArtistesInfos> artistes ;
     private List <Salle> salles;
-    private String date ;
 
-    public Even(String nom , String date) {
+    public Even(String nom ) {
         name = nom;
         artistes = new ArrayList<>();
         salles = new ArrayList<>();
-        this.date =date;
+
     }
 
     /**
@@ -47,9 +46,6 @@ public class Even  implements Comparable<Even>{
         return salles;
     }
 
-    public String getDate() {
-        return date;
-    }
 
     @Override
     public boolean equals(Object o) {

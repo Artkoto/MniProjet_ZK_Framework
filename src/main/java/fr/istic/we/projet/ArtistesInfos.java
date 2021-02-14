@@ -14,10 +14,10 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
 
     private String anneeInfo;
     private String paysInfo;
-    private String nameInfo;
+    private final String nameInfo;
     private String VilleInfo;
-    private List<Salle> salles ;
-    private List<Even> evens ;
+    private final List<Salle> salles ;
+    private final List<Even> evens ;
 
     public ArtistesInfos(String name) {
         this.spotifyInfo = "";
@@ -63,6 +63,26 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
         return evens;
     }
 
+    public void setSpotifyInfo(String spotifyInfo) {
+        this.spotifyInfo = spotifyInfo;
+    }
+
+    public void setDeezerInfo(String deezerInfo) {
+        this.deezerInfo = deezerInfo;
+    }
+
+    public void setAnneeInfo(String anneeInfo) {
+        this.anneeInfo = anneeInfo;
+    }
+
+    public void setPaysInfo(String paysInfo) {
+        this.paysInfo = paysInfo;
+    }
+
+    public void setVilleInfo(String villeInfo) {
+        VilleInfo = villeInfo;
+    }
+
     /**
      * ajouter une salle à la liste
      * @param salle ,
@@ -99,22 +119,33 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
         return  (getNameInfo().compareTo(artistesB.getNameInfo()));
     }
 
-    public boolean contientSall(String salle) {
+    /**
+     *
+     * @param salle
+     * @return retourne la salle ou null
+     */
+    public Salle contientSall(String salle) {
         String salleMiniscule = salle.toLowerCase();
         for (Salle s : salles){
             if(s.getName().toLowerCase().equals(salleMiniscule))
-                return true;
+                return s;
         }
-        return false;
+        return null;
 
     }
-    public boolean contientEven(String even) {
+
+    /**
+     *
+     * @param even
+     * @return retouren l'even sinon null
+     */
+    public Even contientEven(String even) {
         String evenMiniscule = even.toLowerCase();
         for (Even e : evens){
             if(e.getName().toLowerCase().equals(evenMiniscule))
-                return true;
+                return e;
         }
-        return false;
+        return null;
 
     }
 }
