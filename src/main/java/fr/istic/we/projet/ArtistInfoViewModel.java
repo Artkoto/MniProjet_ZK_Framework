@@ -9,8 +9,8 @@ import java.util.List;
 
 public class ArtistInfoViewModel {
 
-	private static final String artisteInfoMessage = "A Total of %d ArtisteInfo Items";
-	private Filtre filtre = new Filtre();
+	private static final String artisteInfoMessage = "Un total de %d artistes";
+	private final Filtre filtre = new Filtre();
 	static List<ArtistesInfos> currentArtisteInfo = ListeArtistesInfos.getArtistesInfos() ;
 
 	public Filtre getFiltre() {
@@ -28,12 +28,7 @@ public class ArtistInfoViewModel {
 	@Command
 	@NotifyChange({"artisteInfosModel", "artisteInfoMessage"})
 	public void changerFiltre() {
-		//currentArtisteInfo = ListeArtistesInfos.getFilterArtisteInfos(filtre);
+		currentArtisteInfo = ListeArtistesInfos.getFilterArtisteInfos(filtre);
 	}
-	   public static void main(String[] args) {
-
-        System.out.println(currentArtisteInfo.size()) ;
-		   //System.out.println(getArtisteInfosModel().getSize());
-    }
 
 }

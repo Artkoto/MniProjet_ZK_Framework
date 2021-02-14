@@ -9,7 +9,7 @@ public class Filtre {
         }
 
         public  void setArtiste(String artiste) {
-            artiste = artiste==null?"":artiste.trim();
+            this.artiste = artiste==null?"":artiste.trim();
         }
 
         public  String getSalle() {
@@ -17,7 +17,7 @@ public class Filtre {
         }
 
         public  void setSalle(String salle) {
-            salle = salle==null?"":salle.trim();
+            this.salle = salle==null?"":salle.trim();
         }
 
         public  String getEven() {
@@ -25,7 +25,7 @@ public class Filtre {
         }
 
         public  void setEven(String even) {
-            even = even==null?"":even.trim();
+            this.even = even==null?"":even.trim();
         }
 
     public String getAnnee() {
@@ -33,6 +33,6 @@ public class Filtre {
     }
 
     public void setAnnee(String annee) {
-        this.annee = annee;
+        this.annee =  annee==null?"" :annee.trim();
     }
 }

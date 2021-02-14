@@ -17,14 +17,14 @@ public class ListeArtistesInfos {
     private static final List<Even> evens = new ArrayList<>();
 
     //import des données depuis JSON
-    static  Path path = Paths.get("out.json");
+    static  Path path = Paths.get("../webapps/miniProjetZK_war/WEB-INF/out.json");
     static JSONParser jsonParser = new JSONParser() ;
     static JSONArray jsonArray;
 
     static  {
         try {
             //JSON de la forme un tablea de plusieurs objet
-           jsonArray = (JSONArray) jsonParser.parse(new FileReader(String.valueOf(path)));
+           jsonArray = (JSONArray) jsonParser.parse(new FileReader(path.toString()));
             for (Object globalObjet : jsonArray) {
                 //recupération du filds
                 JSONObject fieldsObject = (JSONObject) ((JSONObject) globalObjet).get("fields");
@@ -209,17 +209,16 @@ public class ListeArtistesInfos {
         List<ArtistesInfos> someArtistes = new ArrayList<ArtistesInfos>();
        // ArtistesInfos artist = new ArtistesInfos();
         String artiste = filtre.getArtiste().toLowerCase();
-        String salle = filtre.getSalle().toLowerCase();
-        String even = filtre.getEven().toLowerCase();
+        String pays = filtre.getSalle().toLowerCase();
+        String ville = filtre.getEven().toLowerCase();
         String date = filtre.getAnnee().toLowerCase();
 
-        for (Iterator<ArtistesInfos> i = artistesInfos.iterator(); i.hasNext();) {
-            ArtistesInfos tmp = i.next();
-            if (tmp.getNameInfo().toLowerCase().contains(artiste) /*&&
-                    tmp.contientSall(salle) != null  &&
-                    tmp.contientEven(even) != null &&
-                    tmp.getAnneeInfo().equals(date)*/)
-            {
+        for (ArtistesInfos tmp : artistesInfos) {
+            if ((tmp.getNameInfo()!=null && tmp.getNameInfo().toLowerCase().contains(artiste)) &&
+                    ((tmp.getVilleInfo() != null && tmp.getVilleInfo().toLowerCase().contains(ville)) || ville.equals("") )&&
+                   ((tmp.getPaysInfo()!=null && tmp.getPaysInfo().toLowerCase().contains(pays)) || pays.equals("")) &&
+                    ((tmp.getAnneeInfo()!=null && tmp.getAnneeInfo().toLowerCase().contains(date))|| date.equals("")))
+                    {
                 someArtistes.add(tmp);
             }
         }
