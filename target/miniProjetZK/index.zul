@@ -1,5 +1,5 @@
 	<div viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')">
-		<grid model="@load(vm.artisteInfosModel)" height="400px">
+		<grid model="@load(vm.artisteInfosModel)" height="80%">
 			<auxhead sclass="category-center">
 				<auxheader label="Artiste information List" colspan="6" />
 			</auxhead>
@@ -37,7 +37,7 @@
 				<row>
 					<label value="@load(each.nameInfo)" />
 					<label value="@load(each.paysInfo)" />
-					<label value="@load(each.VilleInfo)" />
+					<label value="@load(each.villeInfo)" />
 					<label value="@load(each.anneeInfo)" />
 					<!--<label value="@load(each.calories)" />
 					<label value="@load(each.quantity)" />-->

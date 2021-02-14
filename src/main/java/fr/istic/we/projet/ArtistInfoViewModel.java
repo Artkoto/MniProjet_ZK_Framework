@@ -28,7 +28,7 @@ public class ArtistInfoViewModel {
 	@Command
 	@NotifyChange({"artisteInfosModel", "artisteInfoMessage"})
 	public void changerFiltre() {
-		currentArtisteInfo = ListeArtistesInfos.getFilterArtisteInfos(filtre);
+		//currentArtisteInfo = ListeArtistesInfos.getFilterArtisteInfos(filtre);
 	}
 	   public static void main(String[] args) {
 
