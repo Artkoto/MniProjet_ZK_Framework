@@ -2,30 +2,37 @@ package fr.istic.we.projet;
 
 public class Filtre {
     
-        private static String artiste="", salle="", even="";
+        private  String artiste="", salle="", even="" , annee = "";
 
-        public  static String getArtiste() {
+        public   String getArtiste() {
             return artiste;
         }
 
-        public static void setArtiste(String artiste) {
+        public  void setArtiste(String artiste) {
             artiste = artiste==null?"":artiste.trim();
         }
 
-        public static String getSalle() {
+        public  String getSalle() {
             return salle;
         }
 
-        public static void setSalle(String salle) {
+        public  void setSalle(String salle) {
             salle = salle==null?"":salle.trim();
         }
 
-        public static String getEven() {
+        public  String getEven() {
             return even;
         }
 
-        public static void setEven(String even) {
+        public  void setEven(String even) {
             even = even==null?"":even.trim();
         }
-    
+
+    public String getAnnee() {
+        return annee;
+    }
+
+    public void setAnnee(String annee) {
+        this.annee = annee;
+    }
 }

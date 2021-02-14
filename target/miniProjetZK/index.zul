@@ -1,50 +1,50 @@
-<zk>
-	<window apply="org.zkoss.bind.BindComposer"
-		viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')"
-		validationMessages="@id('vmsgs')">
-		<grid model="@load(vm.foodModel)" height="400px">
+	<div viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')">
+		<grid model="@load(vm.artisteInfosModel)" height="400px">
 			<auxhead sclass="category-center">
-				<auxheader label="Healthy Food List" colspan="6" />
+				<auxheader label="Artiste information List" colspan="6" />
 			</auxhead>
 			<auxhead sclass="category-center">
 				<auxheader colspan="1">
 					<span sclass="z-icon-filter"/>
 					<textbox instant="true" width="100px"
-							 value="@bind(vm.foodFilter.category)" onChange="@command('changeFilter')" />
+							 value="@bind(vm.filtre.artiste)" onChange="@command('changerFiltre')" />
 				</auxheader>
 				<auxheader colspan="1">
 					<span sclass="z-icon-filter"/>
 					<textbox instant="true" width="100px"
-							 value="@bind(vm.foodFilter.name)" onChange="@command('changeFilter')"/>
+							 value="@bind(vm.filtre.salle)" onChange="@command('changerFiltre')"/>
 				</auxheader>
 				<auxheader colspan="1">
 					<span sclass="z-icon-filter"/>
 					<textbox instant="true" width="100px"
-							 value="@bind(vm.foodFilter.nutrients)" onChange="@command('changeFilter')"/>
+							 value="@bind(vm.filtre.even)" onChange="@command('changerFiltre')"/>
 				</auxheader>
-				<auxheader label="Detail Data of Foods" colspan="3" />
+				<auxheader colspan="1">
+					<span sclass="z-icon-filter"/>
+					<textbox instant="true" width="100px"
+							 value="@bind(vm.filtre.annee)" onChange="@command('changerFiltre')"/>
+				</auxheader>
 			</auxhead>
 			<columns>
-				<column width="20%">Category</column>
-				<column width="20%">Name</column>
-				<column width="20%">Top Nutrients</column>
-				<column width="10%">% of Daily</column>
-				<column width="10%">Calories</column>
-				<column width="20%">Quantity</column>
+				<column width="30%">Artistes</column>
+				<column width="25%">Pays</column>
+				<column width="25%">Ville</column>
+				<column width="20%">Année</column>
+				<!--<column width="10%">Calories</column>
+				<column width="20%">Quantity</column>-->
 			</columns>
-			<template name="model">
+			<template name="model" >
 				<row>
-					<label value="@load(each.category)" />
-					<label value="@load(each.name)" />
-					<label value="@load(each.topNutrients)" />
-					<label value="@load(each.dailyPercent)" />
-					<label value="@load(each.calories)" />
-					<label value="@load(each.quantity)" />
+					<label value="@load(each.nameInfo)" />
+					<label value="@load(each.paysInfo)" />
+					<label value="@load(each.VilleInfo)" />
+					<label value="@load(each.anneeInfo)" />
+					<!--<label value="@load(each.calories)" />
+					<label value="@load(each.quantity)" />-->
 				</row>
 			</template>
 			<foot>
-				<footer span="6" class="footer_right" label="@load(vm.footer)" />
+				<footer span="6" class="footer_right" label="@load(vm.artisteInfoMessage)" />
 			</foot>
 		</grid>
-	</window>
-</zk>
+	</div>

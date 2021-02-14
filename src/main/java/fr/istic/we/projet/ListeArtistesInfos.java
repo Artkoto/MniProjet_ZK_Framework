@@ -1,21 +1,14 @@
 package fr.istic.we.projet;
 
-import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.io.FileReader;
-import java.io.IOException;
-
-import javassist.ClassMap;
 import org.zkoss.json.parser.JSONParser;
 import org.zkoss.json.JSONObject;
 import org.zkoss.json.JSONArray;
-import org.zkoss.json.parser.ParseException;
-
-
 
 public class ListeArtistesInfos {
 
@@ -195,6 +188,10 @@ public class ListeArtistesInfos {
         /*for (Even e : evens){
             System.out.println(e.getName()+"  " +e.getArtistes().get(0).getNameInfo()+  " "+e.getSalles().get(0).getName());
         }*/
+
+        /*for (ArtistesInfos a : artistesInfos){
+            System.out.println(a.getNameInfo());
+        }*/
     }
 
 
@@ -211,15 +208,18 @@ public class ListeArtistesInfos {
     public static List<ArtistesInfos> getFilterArtisteInfos(Filtre filtre) {
         List<ArtistesInfos> someArtistes = new ArrayList<ArtistesInfos>();
        // ArtistesInfos artist = new ArtistesInfos();
-        String artiste = Filtre.getArtiste().toLowerCase();
-        String salle = Filtre.getSalle().toLowerCase();
-        String even = Filtre.getEven().toLowerCase();
+        String artiste = filtre.getArtiste().toLowerCase();
+        String salle = filtre.getSalle().toLowerCase();
+        String even = filtre.getEven().toLowerCase();
+        String date = filtre.getAnnee().toLowerCase();
 
         for (Iterator<ArtistesInfos> i = artistesInfos.iterator(); i.hasNext();) {
             ArtistesInfos tmp = i.next();
-            if (tmp.getNameInfo().toLowerCase().contains(artiste) &&
+            if (tmp.getNameInfo().toLowerCase().contains(artiste) /*&&
                     tmp.contientSall(salle) != null  &&
-                    tmp.contientEven(even) != null) {
+                    tmp.contientEven(even) != null &&
+                    tmp.getAnneeInfo().equals(date)*/)
+            {
                 someArtistes.add(tmp);
             }
         }
@@ -230,12 +230,12 @@ public class ListeArtistesInfos {
         return artistesInfos;
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         System.out.println(path);
         JSONObject object = (JSONObject) jsonArray.get(0);
         JSONObject ob2 = (JSONObject) object.get("fields");
         System.out.println(object);
         System.out.println( ob2.get("artistes") );
-    }
+    }*/
 
 }
