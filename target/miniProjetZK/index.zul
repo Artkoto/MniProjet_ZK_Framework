@@ -1,7 +1,6 @@
 <zk >
 	<window apply="org.zkoss.bind.BindComposer"
-			viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')"
-	style="backgroundcolor:orange">
+			viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')" >
 		<div>
 			<grid model="@load(vm.artisteInfosModel)" height="850px">
 				<auxhead sclass="category-center">
@@ -43,7 +42,7 @@
 				</columns>
 				<template name="model" >
 					<row>
-						<label value="@load(each.nameInfo)" />
+					<a href="artisteDetail.zul"><label value="@load(each.nameInfo)" /> </a>
 						<label value="@load(each.paysInfo)" />
 						<label value="@load(each.villeInfo)" />
 						<label value="@load(each.anneeInfo)" />

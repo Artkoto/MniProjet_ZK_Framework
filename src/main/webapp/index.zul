@@ -42,7 +42,7 @@
 				</columns>
 				<template name="model" >
 					<row>
-						<label value="@load(each.nameInfo)" />
+					<a href="artisteDetail.zul"><label value="@load(each.nameInfo)" /> </a>
 						<label value="@load(each.paysInfo)" />
 						<label value="@load(each.villeInfo)" />
 						<label value="@load(each.anneeInfo)" />
