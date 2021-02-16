@@ -229,6 +229,16 @@ public class ListeArtistesInfos {
         return artistesInfos;
     }
 
+    public static ArtistesInfos contientArtist(String nom) {
+        String nomMiniscule = nom.toLowerCase();
+        for (ArtistesInfos a : artistesInfos){
+            if(a.getNameInfo().toLowerCase().equalsIgnoreCase(nomMiniscule))
+                return a;
+        }
+        return null;
+
+    }
+
 /*    public static void main(String[] args) {
         System.out.println(path);
         JSONObject object = (JSONObject) jsonArray.get(0);

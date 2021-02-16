@@ -1,8 +1,12 @@
 <zk >
 	<window apply="org.zkoss.bind.BindComposer"
-			viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')" >
+			viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')"
+	title="Artistes Informations">
 		<div>
-			<grid model="@load(vm.artisteInfosModel)" height="850px">
+			<grid id="grid1"
+				  model="@load(vm.artisteInfosModel)" height="850px"
+				  mold="paging" pageSize="100"
+			>
 				<auxhead sclass="category-center">
 					<auxheader label="Artiste information List" colspan="6" />
 				</auxhead>
@@ -37,19 +41,22 @@
 					<column width="25%">Pays</column>
 					<column width="25%">Ville</column>
 					<column width="20%">Année</column>
-					<!--<column width="10%">Calories</column>
-                    <column width="20%">Quantity</column>-->
 				</columns>
-				<template name="model" >
-					<row>
-					<a href="artisteDetail.zul"><label value="@load(each.nameInfo)" /> </a>
+
+				<template name="model">
+
+<!--					onClick="Executions.sendRedirect(&quot;artisteDetail.zul&quot;)"-->
+					<row  onMouseOver="@command('goToDetail',artiste=each)">
+
+						<a href="artisteDetail.zul"><label value="@load(each.nameInfo)"/></a>
 						<label value="@load(each.paysInfo)" />
 						<label value="@load(each.villeInfo)" />
 						<label value="@load(each.anneeInfo)" />
-						<!--<label value="@load(each.calories)" />
-                        <label value="@load(each.quantity)" />-->
+
 					</row>
+
 				</template>
+
 				<foot>
 					<footer span="6" class="footer_right" label="@load(vm.artisteInfoMessage)" />
 				</foot>

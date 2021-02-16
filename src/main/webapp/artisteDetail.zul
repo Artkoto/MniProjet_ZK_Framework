@@ -1,60 +1,82 @@
 <zk >
     <window apply="org.zkoss.bind.BindComposer"
-            viewModel="@id('mv')@init('fr.istic.we.projet.ArtististeDetailViewModel')" >
-        <div height="600px">
-            <grid model="@load(mv.artisteInfosMode)">
-                <auxhead sclass="category-center">
-                    <auxheader label="détaille Artiste " colspan="6" />
-                </auxhead>
-                <auxhead sclass="category-center">
-                    <auxheader colspan="1">
-                        <span sclass="z-icon-filter"/>
-                        <textbox instant="true" width="100px"
-                                 value="@bind(mv.filtre.artiste)" onChange="@command('changerFiltre')" />
-                    </auxheader>
-                    <auxheader colspan="1">
-                        <span sclass="z-icon-filter"/>
-                        <!--salle pour pays-->
-                        <textbox instant="true" width="100px"
+            viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')"
 
-                                 value="@bind(mv.filtre.salle)" onChange="@command('changerFiltre')"/>
-                    </auxheader>
-                    <auxheader colspan="1">
-                        <span sclass="z-icon-filter"/>
-                        <!--Even pour ville-->
-                        <textbox instant="true" width="100px"
+    >
+<!--            <label value="${vm.detailArtiste.artiste.nameInfo}" />-->
+<!--            <label value="${vm.detailArtiste.artiste.paysInfo}" />-->
+<!--            <label value="${vm.detailArtiste.artiste.villeInfo}" />-->
+<!--            <label value="${vm.detailArtiste.artiste.anneeInfo}" />-->
+        <div align="center">
+            <div width="60%">
+                <div align="left">
+                    <hbox style="margin-top:20px" >
+                        <image width="250px" src="https://s.rfi.fr/media/display/06774f86-10bf-11ea-98b5-005056bf7c53/w:1280/p:1x1/dj_arafat_rfi_legendes_urbaines_canthony_ravera_0.jpg" />
+                       <div>
+                           <div>
+                               <label value="Artiste :" />
+                               <label value="@load(vm.detailArtiste.artiste.nameInfo)" sclass="heavy" />
+                           </div>
+                           <div>
+                               <label value="Pays d'origine :" />
+                               <label value="@load(vm.detailArtiste.artiste.paysInfo)"  sclass="heavy" />
+                           </div>
+                           <div>
+                               <label value="Ville d'origine :" />
+                               <label value="@load(vm.detailArtiste.artiste.villeInfo)" sclass="heavy" />
+                           </div>
+                           <div>
+                               <label value="Premier sortie :" />
+                               <label value="@load(vm.detailArtiste.artiste.anneeInfo)"  sclass="heavy"/>
+                           </div>
+                       </div>
 
-                                 value="@bind(mv.filtre.even)" onChange="@command('changerFiltre')"/>
-                    </auxheader>
-                    <auxheader colspan="1">
-                        <span sclass="z-icon-filter"/>
-                        <textbox instant="true" width="100px"
-                                 value="@bind(mv.filtre.annee)" onChange="@command('changerFiltre')"/>
-                    </auxheader>
-                </auxhead>
-                <columns>
-                    <column width="30%">Artistes</column>
-                    <column width="25%">Pays</column>
-                    <column width="25%">Ville</column>
-                    <column width="20%">Année</column>
-                    <!--<column width="10%">Calories</column>
-                    <column width="20%">Quantity</column>-->
-                </columns>
-                <template name="model" >
-                    <row>
-                        <label value="@load(each.nameInfo)" />
-                        <label value="@load(each.paysInfo)" />
-                        <label value="@load(each.villeInfo)" />
-                        <label value="@load(each.anneeInfo)" />
-                        <!--<label value="@load(each.calories)" />
-                        <label value="@load(each.quantity)" />-->
-                    </row>
-                </template>
+                    </hbox>
+                </div>
+                <hlayout style="margin-top:20px">
+                <div id="artiste_salles" hflex="1">
+                    <listbox height="100%" model="@load(vm.detailArtiste.artiste.salles)"
+                             emptyMessage="Aucune salle">
+                        <listhead>
+                            <listheader label="Salles" />
+                        </listhead>
+                        <template name="model">
+                            <listitem>
+                                <listcell label="@init(each.name)"/>
+                            </listitem>
+                        </template>
+                    </listbox>
+                </div>
+                <div id="artiste_evens" hflex="1">
+                    <listbox height="100%" model="@load(vm.detailArtiste.artiste.evens)"
+                             emptyMessage="Aucun évenement">
+                        <listhead>
+                            <listheader label="Evenements" />
+                        </listhead>
+                        <template name="model">
+                            <listitem>
+                                <listcell label="@init(each.name)"/>
+                            </listitem>
+                        </template>
+                    </listbox>
+                </div>
+                </hlayout>
+            </div>
+            <div>
+                <button style="margin-top:30px ; margin-bottom:15px"
+                        onClick="Executions.sendRedirect(&quot;index.zul&quot;)"> Retour
+                </button>
+            </div>
+            <grid>
+
                 <foot>
-                    <footer span="6" class="footer_right" label="@load(mv.artisteInfoMessag)" />
+                    <footer span="6" class="footer_right" label="@load(vm.artisteInfoMessage)" />
                 </foot>
             </grid>
+
         </div>
+
+
 
     </window>
 </zk>
