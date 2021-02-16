@@ -3,10 +3,6 @@
             viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')"
 
     >
-<!--            <label value="${vm.detailArtiste.artiste.nameInfo}" />-->
-<!--            <label value="${vm.detailArtiste.artiste.paysInfo}" />-->
-<!--            <label value="${vm.detailArtiste.artiste.villeInfo}" />-->
-<!--            <label value="${vm.detailArtiste.artiste.anneeInfo}" />-->
         <div align="center">
             <div width="60%">
                 <div align="left">

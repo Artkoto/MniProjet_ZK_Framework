@@ -46,13 +46,11 @@
 				<template name="model">
 
 <!--					onClick="Executions.sendRedirect(&quot;artisteDetail.zul&quot;)"-->
-					<row  onMouseOver="@command('goToDetail',artiste=each)">
-
-						<a href="artisteDetail.zul"><label value="@load(each.nameInfo)"/></a>
+					<row  onClick="@command('goToDetail',artiste=each)">
+						<label value="@load(each.nameInfo)"/>
 						<label value="@load(each.paysInfo)" />
 						<label value="@load(each.villeInfo)" />
 						<label value="@load(each.anneeInfo)" />
-
 					</row>
 
 				</template>

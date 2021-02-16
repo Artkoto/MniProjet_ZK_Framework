@@ -4,8 +4,10 @@ import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.bind.annotation.Init;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 
 import java.util.List;
 
@@ -57,6 +59,8 @@ public class ArtistInfoViewModel {
 	@NotifyChange("*")
 	public void goToDetail(@BindingParam("artiste") ArtistesInfos arttiste) {
 		detailArtiste.setArtiste(arttiste);
+		//Messagebox.show("It works!");
+		Executions.sendRedirect("artisteDetail.zul");
 		//detailArtiste.setArtiste(currentArtisteInfo.get(0));
 	}
 
