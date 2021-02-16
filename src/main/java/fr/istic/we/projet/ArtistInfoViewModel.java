@@ -7,17 +7,16 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;
-import org.zkoss.zul.Messagebox;
+
 
 import java.util.List;
 
 public class ArtistInfoViewModel {
 
 	private static final String artisteInfoMessage = "Un total de %d artistes";
-	private final Filtre filtre = new Filtre();
-	static List<ArtistesInfos> currentArtisteInfo = ListeArtistesInfos.getArtistesInfos() ;
+	private  Filtre filtre ;
+	static List<ArtistesInfos> currentArtisteInfo ;
 	//variable pour l'affichage des détails
-	private static String nomArtiste ="";
 	private static ArtististeDetailViewModel detailArtiste =new ArtististeDetailViewModel() ;
 
 	public Filtre getFiltre() {
@@ -35,19 +34,12 @@ public class ArtistInfoViewModel {
 
 	@Init
 	public void init(){
-		nomArtiste = "";
-	}
-
-	public static void setNomArtiste(String nomArtiste) {
-		ArtistInfoViewModel.nomArtiste = nomArtiste;
+		filtre = new Filtre();
+		currentArtisteInfo = ListeArtistesInfos.getArtistesInfos() ;
 	}
 
 	public static void setDetailArtiste(ArtististeDetailViewModel detailArtiste) {
 		ArtistInfoViewModel.detailArtiste = detailArtiste;
-	}
-
-	public static String getNomArtiste() {
-		return nomArtiste;
 	}
 
 	public  ArtististeDetailViewModel getDetailArtiste() {
@@ -59,9 +51,20 @@ public class ArtistInfoViewModel {
 	@NotifyChange("*")
 	public void goToDetail(@BindingParam("artiste") ArtistesInfos arttiste) {
 		detailArtiste.setArtiste(arttiste);
-		//Messagebox.show("It works!");
 		Executions.sendRedirect("artisteDetail.zul");
-		//detailArtiste.setArtiste(currentArtisteInfo.get(0));
+	}
+
+	@Command
+	@NotifyChange("*")
+	public void goToSalles(@BindingParam("salle") Salle salle1) {
+		detailArtiste.setSalle(salle1) ;
+		Executions.sendRedirect("salle.zul");
+	}
+	@Command
+	@NotifyChange("*")
+	public void goToEvens(@BindingParam("even") Even even1) {
+		detailArtiste.setEven(even1);
+		Executions.sendRedirect("even.zul");
 	}
 
 	@Command

@@ -1,17 +1,31 @@
 package fr.istic.we.projet;
 
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.zhtml.A;
-import org.zkoss.zul.ListModel;
-import org.zkoss.zul.ListModelList;
-
-import java.util.List;
-
 public class ArtististeDetailViewModel {
 
     //param pour la recherche
     private static ArtistesInfos artiste ;
+
+    //pour les détails de salles
+    private static Salle salle;
+
+//    pour les details des evenements
+    private static Even even;
+
+    public  Salle getSalle() {
+        return salle;
+    }
+
+    public  Even getEven() {
+        return even;
+    }
+
+    public  void setSalle(Salle salle) {
+        ArtististeDetailViewModel.salle = salle;
+    }
+
+    public  void setEven(Even even) {
+        ArtististeDetailViewModel.even = even;
+    }
 
     public ArtistesInfos getArtiste() {
         return artiste;
@@ -21,9 +35,5 @@ public class ArtististeDetailViewModel {
         artiste = artiste1;
     }
 
-        @Command
-        @NotifyChange("*")
-        public void changerFiltre(){;
-        }
 
     }

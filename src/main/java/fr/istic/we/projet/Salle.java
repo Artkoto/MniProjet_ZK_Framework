@@ -22,6 +22,7 @@ public class Salle implements Comparable<Salle>{
      * @param even ,
      */
     public void add (Even even){
+        if (!evens.contains(even))
         evens.add(even);
         if (!even.getSalles().contains(this))
         even.add(this);
@@ -32,8 +33,8 @@ public class Salle implements Comparable<Salle>{
      * @param artistesInfos ,
      */
     public void add (ArtistesInfos artistesInfos){
+        if (!artistes.contains(artistesInfos))
         artistes.add(artistesInfos);
-
     }
 
     public String getName() {

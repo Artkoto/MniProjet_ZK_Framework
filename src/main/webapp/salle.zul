@@ -1,0 +1,65 @@
+<zk >
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')"
+
+    >
+        <div align="center">
+            <div width="60%">
+                <div align="left">
+                    <div style="margin-top:20px" align="center">
+                        <image width="100%"
+                               src="https://www.tourisme-orleansmetropole.com/files/styles/paragraphes_background/public/thumbnails/image/l-astrolabe-scene-de-musiques-actuelles-orleans-.jpg"
+                        />
+                        <hbox style="margin-top:15px ;color:gray" align="center">
+                            ${vm.detailArtiste.salle.name}
+                        </hbox>
+                    </div>
+                </div>
+                <hlayout style="margin-top:20px">
+                    <div id="artiste_salles" hflex="1">
+                        <listbox height="500px" model="@load(vm.detailArtiste.salle.artistes)"
+                                 emptyMessage="Aucune salle">
+                            <listhead>
+                                <listheader label="Ces artistes y ont presté" />
+                            </listhead>
+                            <template name="model">
+                                <listitem onClick="@command('goToDetail',artiste=each)">
+                                    <listcell label="@init(each.nameInfo)" />
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </div>
+                    <div id="artiste_evens" hflex="1">
+                        <listbox height="500px" model="@load(vm.detailArtiste.salle.evens)"
+                                 emptyMessage="Aucun évenement">
+                            <listhead>
+                                <listheader label="ces évenement s'y sont déroulées" />
+                            </listhead>
+                            <template name="model">
+                                <listitem onClick="@command('goToEvens',even=each)">
+                                    <listcell label="@init(each.name)" />
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </div>
+                </hlayout>
+            </div>
+            <div>
+                <button hflex="1" style="margin-top:30px ; margin-bottom:15px"
+                        onClick="Executions.sendRedirect(&quot;index.zul&quot;)"> ACCUEIL
+                </button>
+            </div>
+            <grid>
+
+                <foot>
+                    <footer span="6" class="footer_right" label="@load(vm.artisteInfoMessage)" />
+                </foot>
+            </grid>
+
+        </div>
+
+
+
+    </window>
+</zk>
+

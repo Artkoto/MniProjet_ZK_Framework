@@ -56,114 +56,150 @@ public class ListeArtistesInfos {
                     artistesInfos1.setSpotifyInfo(spotify);
                     //ajout des evenements
                     if (even != null){
-                        Even even1 = new Even(even);
+                        Even even1 = contientEven(even);
+                        if (even1 != null)
                         artistesInfos1.add(even1);
-                        if (!evens.contains(even1))
+                        else{
+                            even1 = new Even(even);
+                            artistesInfos1.add(even1);
                             evens.add(even1);
+                        }
                     }
                     //ajout des salles de spectacles de 1 à 8
                     if (salle1 != null){
-                        Salle salle = new Salle(salle1);
+                        Salle salle =contientSall(salle1);
+                        if (salle != null)
                         artistesInfos1.add(salle);
+                        else {
+                            salle = new Salle(salle1);
+                            artistesInfos1.add(salle);
+                            salles.add(salle);
+                        }
                         if (even != null) {
                             Even evenCurrent = artistesInfos1.contientEven(even);
                             if (evenCurrent != null) {
                                 salle.add(evenCurrent);
                             }
                         }
-                        if (!salles.contains(salle))
-                            salles.add(salle);
                     }
                     //salle2
                     if (salle2 != null){
-                        Salle salle = new Salle(salle2);
-                        artistesInfos1.add(salle);
+                        Salle salle =contientSall(salle2);
+                        if (salle != null)
+                            artistesInfos1.add(salle);
+                        else {
+                            salle = new Salle(salle2);
+                            artistesInfos1.add(salle);
+                            salles.add(salle);
+                        }
                         if (even != null) {
                             Even evenCurrent = artistesInfos1.contientEven(even);
                             if (evenCurrent != null) {
                                 salle.add(evenCurrent);
                             }
                         }
-                        if (!salles.contains(salle))
-                            salles.add(salle);
                     }
                     //sallez3
                     if (salle3 != null){
-                        Salle salle = new Salle(salle3);
-                        artistesInfos1.add(salle);
+                        Salle salle =contientSall(salle3);
+                        if (salle != null)
+                            artistesInfos1.add(salle);
+                        else {
+                            salle = new Salle(salle3);
+                            artistesInfos1.add(salle);
+                            salles.add(salle);
+                        }
                         if (even != null) {
                             Even evenCurrent = artistesInfos1.contientEven(even);
                             if (evenCurrent != null) {
                                 salle.add(evenCurrent);
                             }
                         }
-                        if (!salles.contains(salle))
-                            salles.add(salle);
                     }
                     //salle4
                     if (salle4 != null){
-                        Salle salle = new Salle(salle4);
-                        artistesInfos1.add(salle);
+                        Salle salle =contientSall(salle4);
+                        if (salle != null)
+                            artistesInfos1.add(salle);
+                        else {
+                            salle = new Salle(salle4);
+                            artistesInfos1.add(salle);
+                            salles.add(salle);
+                        }
                         if (even != null) {
                             Even evenCurrent = artistesInfos1.contientEven(even);
                             if (evenCurrent != null) {
                                 salle.add(evenCurrent);
                             }
                         }
-                        if (!salles.contains(salle))
-                            salles.add(salle);
                     }
                     //salle5
                     if (salle5 != null){
-                        Salle salle = new Salle(salle5);
-                        artistesInfos1.add(salle);
+                        Salle salle =contientSall(salle5);
+                        if (salle != null)
+                            artistesInfos1.add(salle);
+                        else {
+                            salle = new Salle(salle5);
+                            artistesInfos1.add(salle);
+                            salles.add(salle);
+                        }
                         if (even != null) {
                             Even evenCurrent = artistesInfos1.contientEven(even);
                             if (evenCurrent != null) {
                                 salle.add(evenCurrent);
                             }
                         }
-                        if (!salles.contains(salle))
-                            salles.add(salle);
                     }
                     //salle6
                     if (salle6 != null){
-                        Salle salle = new Salle(salle6);
-                        artistesInfos1.add(salle);
+                        Salle salle =contientSall(salle6);
+                        if (salle != null)
+                            artistesInfos1.add(salle);
+                        else {
+                            salle = new Salle(salle6);
+                            artistesInfos1.add(salle);
+                            salles.add(salle);
+                        }
                         if (even != null) {
                             Even evenCurrent = artistesInfos1.contientEven(even);
                             if (evenCurrent != null) {
                                 salle.add(evenCurrent);
                             }
                         }
-                        if (!salles.contains(salle))
-                            salles.add(salle);
                     }
                     //salle7
                     if (salle7 != null){
-                        Salle salle = new Salle(salle7);
-                        artistesInfos1.add(salle);
+                        Salle salle =contientSall(salle7);
+                        if (salle != null)
+                            artistesInfos1.add(salle);
+                        else {
+                            salle = new Salle(salle7);
+                            artistesInfos1.add(salle);
+                            salles.add(salle);
+                        }
                         if (even != null) {
                             Even evenCurrent = artistesInfos1.contientEven(even);
                             if (evenCurrent != null) {
                                 salle.add(evenCurrent);
                             }
                         }
-                        if (!salles.contains(salle))
-                            salles.add(salle);
                     }
                     //salle8
                     if (salle8 != null){
-                        Salle salle = new Salle(salle8);
-                        artistesInfos1.add(salle);
+                        Salle salle =contientSall(salle8);
+                        if (salle != null)
+                            artistesInfos1.add(salle);
+                        else {
+                            salle = new Salle(salle8);
+                            artistesInfos1.add(salle);
+                            salles.add(salle);
+                        }
                         if (even != null) {
                             Even evenCurrent = artistesInfos1.contientEven(even);
                             if (evenCurrent != null) {
                                 salle.add(evenCurrent);
                             }
                         }
-                        if (!salles.contains(salle))
-                            salles.add(salle);
                     }
 
                 }
@@ -234,6 +270,36 @@ public class ListeArtistesInfos {
         for (ArtistesInfos a : artistesInfos){
             if(a.getNameInfo().toLowerCase().equalsIgnoreCase(nomMiniscule))
                 return a;
+        }
+        return null;
+
+    }
+
+    /**
+     *
+     * @param salle
+     * @return retourne la salle ou null
+     */
+    public static Salle contientSall(String salle) {
+        String salleMiniscule = salle.toLowerCase();
+        for (Salle s : salles){
+            if(s.getName().toLowerCase().equals(salleMiniscule))
+                return s;
+        }
+        return null;
+
+    }
+
+    /**
+     *
+     * @param even
+     * @return retouren l'even sinon null
+     */
+    public static Even contientEven(String even) {
+        String evenMiniscule = even.toLowerCase();
+        for (Even e : evens){
+            if(e.getName().toLowerCase().equals(evenMiniscule))
+                return e;
         }
         return null;
 

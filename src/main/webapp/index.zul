@@ -8,7 +8,7 @@
 				  mold="paging" pageSize="100"
 			>
 				<auxhead sclass="category-center">
-					<auxheader label="Artiste information List" colspan="6" />
+					<auxheader label="Artistes informations List" colspan="6" />
 				</auxhead>
 				<auxhead sclass="category-center">
 					<auxheader colspan="1">

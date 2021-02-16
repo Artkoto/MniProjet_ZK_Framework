@@ -21,6 +21,7 @@ public class Even  implements Comparable<Even>{
      * @param salle ,
      */
     public void add (Salle salle){
+        if (!salles.contains(salle))
         salles.add(salle);
         if (!salle.getEvens().contains(this))
         salle.add(this);
@@ -31,6 +32,7 @@ public class Even  implements Comparable<Even>{
      * @param artistesInfos ,
      */
     public void add (ArtistesInfos artistesInfos){
+        if (!artistes.contains(artistesInfos))
         artistes.add(artistesInfos);
     }
 

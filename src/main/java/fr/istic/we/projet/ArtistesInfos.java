@@ -88,8 +88,10 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
      * @param salle ,
      */
     public void add (Salle salle) {
-        salles.add(salle);
-        salle.add(this);
+        if (contientSall(salle.getName())==null) {
+            salles.add(salle);
+            salle.add(this);
+        }
     }
 
     /**
@@ -97,8 +99,10 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
      * @param even ,
      */
     public void add (Even even){
-        evens.add(even);
-        even.add(this);
+        if (contientEven(even.getName())==null) {
+            evens.add(even);
+            even.add(this);
+        }
     }
 
         @Override

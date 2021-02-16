@@ -1,0 +1,63 @@
+<zk >
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm')@init('fr.istic.we.projet.ArtistInfoViewModel')"
+
+    >
+        <div align="center">
+            <div width="60%">
+                <div align="left">
+                    <div style="margin-top:20px" align="center">
+                        <image width="100%"
+                               src="https://www.lebureauexport.fr/wp-content/uploads/2018/02/grammys-social-1030x430.jpg"
+                        />
+                        <hbox style="margin-top:15px ;color:gray" align="center">
+                            ${vm.detailArtiste.even.name}
+                        </hbox>
+                    </div>
+                </div>
+                <hlayout style="margin-top:20px">
+                    <div id="artiste_salles" hflex="1">
+                        <listbox height="500px" model="@load(vm.detailArtiste.even.artistes)"
+                                 emptyMessage="Aucune salle">
+                            <listhead>
+                                <listheader label="Ces artistes y ont presté" />
+                            </listhead>
+                            <template name="model">
+                                <listitem onClick="@command('goToDetail',artiste=each)">
+                                    <listcell label="@init(each.nameInfo)" />
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </div>
+                    <div id="artiste_evens" hflex="1">
+                        <listbox height="500px" model="@load(vm.detailArtiste.even.salles)"
+                                 emptyMessage="Aucun évenement">
+                            <listhead >
+                                <listheader label="Ces salles ont accueilli l'événement" />
+                            </listhead>
+                            <template name="model">
+                                <listitem onClick="@command('goToSalles',salle=each)">
+                                    <listcell label="@init(each.name)"/>
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </div>
+                </hlayout>
+            </div>
+            <div>
+                <button hflex="1" style="margin-top:30px ; margin-bottom:15px"
+                        onClick="Executions.sendRedirect(&quot;index.zul&quot;)"> ACCUEIL
+                </button>
+            </div>
+            <grid>
+
+                <foot>
+                    <footer span="6" class="footer_right" label="@load(vm.artisteInfoMessage)" />
+                </foot>
+            </grid>
+
+        </div>
+
+    </window>
+</zk>
+

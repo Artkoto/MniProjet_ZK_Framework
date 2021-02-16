@@ -5,13 +5,13 @@
     >
         <div align="center">
             <div width="60%">
-                <div align="left">
+                <div align="left" >
                     <hbox style="margin-top:20px" >
                         <image width="250px" src="https://s.rfi.fr/media/display/06774f86-10bf-11ea-98b5-005056bf7c53/w:1280/p:1x1/dj_arafat_rfi_legendes_urbaines_canthony_ravera_0.jpg" />
-                       <div>
-                           <div>
-                               <label value="Artiste :" />
-                               <label value="@load(vm.detailArtiste.artiste.nameInfo)" sclass="heavy" />
+                       <div align="center">
+                           <div >
+                               <label style="font-size: 4rem;" value="@load(vm.detailArtiste.artiste.nameInfo)"
+                                      sclass="heavy" />
                            </div>
                            <div>
                                <label value="Pays d'origine :" />
@@ -37,7 +37,7 @@
                             <listheader label="Salles" />
                         </listhead>
                         <template name="model">
-                            <listitem>
+                            <listitem onClick="@command('goToSalles',salle=each)">
                                 <listcell label="@init(each.name)"/>
                             </listitem>
                         </template>
@@ -50,7 +50,7 @@
                             <listheader label="Evenements" />
                         </listhead>
                         <template name="model">
-                            <listitem>
+                            <listitem onClick="@command('goToEvens',even=each)" >
                                 <listcell label="@init(each.name)"/>
                             </listitem>
                         </template>
@@ -59,8 +59,11 @@
                 </hlayout>
             </div>
             <div>
-                <button style="margin-top:30px ; margin-bottom:15px"
-                        onClick="Executions.sendRedirect(&quot;index.zul&quot;)"> Retour
+<!--                <button hflex="1" style="margin-top:30px ; margin-bottom:15px ; background:red"-->
+<!--                        onClick="Executions.sendRedirect(&quot;index.zul&quot;)"> RETOUR-->
+<!--                </button>-->
+                <button hflex="1" style="margin-top:30px ; margin-bottom:15px"
+                        onClick="Executions.sendRedirect(&quot;index.zul&quot;)"> ACCUEIL
                 </button>
             </div>
             <grid>
