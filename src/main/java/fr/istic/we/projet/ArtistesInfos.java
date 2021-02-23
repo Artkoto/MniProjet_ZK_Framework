@@ -102,7 +102,10 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
        String imgDjArafat = "https://s.rfi.fr/media/display/06774f86-10bf-11ea-98b5-005056bf7c53/w:1280/p:1x1" +
                 "/dj_arafat_rfi_legendes_urbaines_canthony_ravera_0.jpg";
        HttpURLConnection connection;
-       String autorisation = "Bearer BQC260yao0WBeVyvUuyE5jRfVS53klQ6ugq3oyG9ONR67ePUr5z6w9Ca7JxY_nyi4Ns_G8bMqs-Wry6PO1nTZS-vA8TMSM8KjxhJ-e0CCKnpSBL56l0lfd78GuKtrm8NJaFJHPyhD2MVeHr15aFARWhwoBQWRLWc1uBJUm7T5MRAng";
+
+       //token valable 3600 secondes vous devez en regenerer pour faire une connexion avec spotify
+        //lien : https://developer.spotify.com/console/get-album/?id=&market=
+       String token = "BQDRTqeNm3CknpvhpXehbyLX9UEKwzyGloQzwdYUtI5xV4RnoctUWJeIrjmjxjFox3CBkcuLHfCn9fg_7TrkJKr4YULu1HVBMKshIfHe3ciSswBt5NrfkfFuN0Xq0oN72rYgM7vRbDWWdN6yCXXOY_MaUckgl4C56RArcFHvLX3O84HR6hpezSFXC_5t_w";
 
        try {
            //recuperation de l'image dans le json
@@ -112,12 +115,13 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
            JSONObject jsonObject;
            JSONObject jsonObject2;
            JSONObject image1;
-           URL url = new URL("https://api.spotify.com/v1/albums?ids="+spotifyInfo.substring(14)+"&market=ES");
+           URL url = new URL("https://api.spotify.com/v1/albums?ids="+spotifyInfo.substring(14)+"&market=FR");
            connection = (HttpURLConnection) url.openConnection();
            connection.setRequestMethod("GET");
            connection.setRequestProperty("accept", "application/json");
            connection.setRequestProperty("Content-Type","application/json");
-           connection.setRequestProperty("Authorization", autorisation);
+           connection.setRequestProperty("Authorization", "Bearer "+ token);
+           connection.setRequestProperty("grant_type", "client_credentials");
            connection.setConnectTimeout(5000);
            connection.setReadTimeout(5000);
 
@@ -126,7 +130,6 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
            String line;
            while ((line = reader.readLine()) != null) {
                json.append(line);
-               System.out.println(line);
            }
            reader.close();
            jsonObject = (JSONObject) jsonParser.parse(json.toString());
