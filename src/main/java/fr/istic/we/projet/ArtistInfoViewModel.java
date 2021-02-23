@@ -51,6 +51,7 @@ public class ArtistInfoViewModel {
 	@NotifyChange("*")
 	public void goToDetail(@BindingParam("artiste") ArtistesInfos arttiste) {
 		detailArtiste.setArtiste(arttiste);
+		detailArtiste.getArtiste().recupImg();
 		Executions.sendRedirect("artisteDetail.zul");
 	}
 

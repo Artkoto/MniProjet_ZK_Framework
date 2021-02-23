@@ -245,8 +245,8 @@ public class ListeArtistesInfos {
         List<ArtistesInfos> someArtistes = new ArrayList<ArtistesInfos>();
        // ArtistesInfos artist = new ArtistesInfos();
         String artiste = filtre.getArtiste().toLowerCase();
-        String pays = filtre.getSalle().toLowerCase();
-        String ville = filtre.getEven().toLowerCase();
+        String pays = filtre.getPays().toLowerCase();
+        String ville = filtre.getVille().toLowerCase();
         String date = filtre.getAnnee().toLowerCase();
 
         for (ArtistesInfos tmp : artistesInfos) {

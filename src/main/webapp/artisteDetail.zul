@@ -7,7 +7,7 @@
             <div width="60%">
                 <div align="left" >
                     <hbox style="margin-top:20px" >
-                        <image width="250px" src="https://s.rfi.fr/media/display/06774f86-10bf-11ea-98b5-005056bf7c53/w:1280/p:1x1/dj_arafat_rfi_legendes_urbaines_canthony_ravera_0.jpg" />
+                        <image width="250px" src="@load(vm.detailArtiste.artiste.image)" />
                        <div align="center">
                            <div >
                                <label style="font-size: 4rem;" value="@load(vm.detailArtiste.artiste.nameInfo)"
@@ -69,7 +69,7 @@
             <grid>
 
                 <foot>
-                    <footer span="6" class="footer_right" label="@load(vm.artisteInfoMessage)" />
+                    <footer span="6" class="footer_right" label="@load(vm.detailArtiste.artiste.nameInfo)" />
                 </foot>
             </grid>
 

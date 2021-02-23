@@ -52,7 +52,7 @@
             <grid>
 
                 <foot>
-                    <footer span="6" class="footer_right" label="@load(vm.artisteInfoMessage)" />
+                    <footer span="6" class="footer_right" label="@load(vm.detailArtiste.salle.name)" />
                 </foot>
             </grid>
 

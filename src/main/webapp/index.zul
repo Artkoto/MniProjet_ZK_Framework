@@ -21,14 +21,14 @@
 						<!--salle pour pays-->
 						<textbox instant="true" width="100px"
 
-								 value="@bind(vm.filtre.salle)" onChange="@command('changerFiltre')"/>
+								 value="@bind(vm.filtre.pays)" onChange="@command('changerFiltre')"/>
 					</auxheader>
 					<auxheader colspan="1">
 						<span sclass="z-icon-filter"/>
 						<!--Even pour ville-->
 						<textbox instant="true" width="100px"
 
-								 value="@bind(vm.filtre.even)" onChange="@command('changerFiltre')"/>
+								 value="@bind(vm.filtre.ville)" onChange="@command('changerFiltre')"/>
 					</auxheader>
 					<auxheader colspan="1">
 						<span sclass="z-icon-filter"/>

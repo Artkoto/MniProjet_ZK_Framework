@@ -1,7 +1,13 @@
 package fr.istic.we.projet;
 
-import org.zkoss.zul.A;
+import org.zkoss.json.JSONArray;
+import org.zkoss.json.JSONObject;
+import org.zkoss.json.parser.JSONParser;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +24,8 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
     private String VilleInfo;
     private final List<Salle> salles ;
     private final List<Even> evens ;
+    //image récupere via spotify
+    private String image;
 
     public ArtistesInfos(String name) {
         this.spotifyInfo = "";
@@ -63,6 +71,10 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
         return evens;
     }
 
+    public String getImage() {
+        return image;
+    }
+
     public void setSpotifyInfo(String spotifyInfo) {
         this.spotifyInfo = spotifyInfo;
     }
@@ -81,6 +93,54 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
 
     public void setVilleInfo(String villeInfo) {
         VilleInfo = villeInfo;
+    }
+
+    /**
+     * recupérer image de l'artiste via spotify
+     */
+    public void recupImg() {
+       String imgDjArafat = "https://s.rfi.fr/media/display/06774f86-10bf-11ea-98b5-005056bf7c53/w:1280/p:1x1" +
+                "/dj_arafat_rfi_legendes_urbaines_canthony_ravera_0.jpg";
+       HttpURLConnection connection;
+       String autorisation = "Bearer BQC260yao0WBeVyvUuyE5jRfVS53klQ6ugq3oyG9ONR67ePUr5z6w9Ca7JxY_nyi4Ns_G8bMqs-Wry6PO1nTZS-vA8TMSM8KjxhJ-e0CCKnpSBL56l0lfd78GuKtrm8NJaFJHPyhD2MVeHr15aFARWhwoBQWRLWc1uBJUm7T5MRAng";
+
+       try {
+           //recuperation de l'image dans le json
+           JSONParser jsonParser = new JSONParser() ;
+           JSONArray jsonArray;
+           JSONArray imgs;
+           JSONObject jsonObject;
+           JSONObject jsonObject2;
+           JSONObject image1;
+           URL url = new URL("https://api.spotify.com/v1/albums?ids="+spotifyInfo.substring(14)+"&market=ES");
+           connection = (HttpURLConnection) url.openConnection();
+           connection.setRequestMethod("GET");
+           connection.setRequestProperty("accept", "application/json");
+           connection.setRequestProperty("Content-Type","application/json");
+           connection.setRequestProperty("Authorization", autorisation);
+           connection.setConnectTimeout(5000);
+           connection.setReadTimeout(5000);
+
+           BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+           StringBuffer json = new StringBuffer();
+           String line;
+           while ((line = reader.readLine()) != null) {
+               json.append(line);
+               System.out.println(line);
+           }
+           reader.close();
+           jsonObject = (JSONObject) jsonParser.parse(json.toString());
+           jsonArray = (JSONArray) jsonObject.get("albums");
+           jsonObject2 = (JSONObject) jsonArray.get(0);
+            imgs = (JSONArray) jsonObject2.get("images");
+           image1 = (JSONObject) imgs.get(0);
+           String imgURL = (String) image1.get("url");
+
+           this.image = (imgURL == null)? imgDjArafat : imgURL;
+       }catch (Exception e){
+           e.printStackTrace();
+            this.image = imgDjArafat ;}
+
     }
 
     /**
@@ -152,4 +212,12 @@ public class ArtistesInfos implements Comparable<ArtistesInfos> {
         return null;
 
     }
+/*
+
+    public static void main(String[] args) {
+        ArtistesInfos art =new ArtistesInfos("a");
+        art.setSpotifyInfo("spotify:album:0Wvz0IHh6iGFMEOfDEh9bv");
+        art.recupImg();
+        System.out.println(art.getImage());
+    }*/
 }

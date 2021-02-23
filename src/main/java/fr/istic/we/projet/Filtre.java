@@ -1,8 +1,9 @@
 package fr.istic.we.projet;
 
 public class Filtre {
-    
-        private  String artiste="", salle="", even="" , annee = "";
+
+    //ajout de filtres pour la recherche
+        private  String artiste="", pays="", ville="" , annee = "";
 
         public   String getArtiste() {
             return artiste;
@@ -12,20 +13,20 @@ public class Filtre {
             this.artiste = artiste==null?"":artiste.trim();
         }
 
-        public  String getSalle() {
-            return salle;
+        public  String getPays() {
+            return pays;
         }
 
-        public  void setSalle(String salle) {
-            this.salle = salle==null?"":salle.trim();
+        public  void setPays(String salle) {
+            this.pays = salle==null?"":salle.trim();
         }
 
-        public  String getEven() {
-            return even;
+        public  String getVille() {
+            return ville;
         }
 
-        public  void setEven(String even) {
-            this.even = even==null?"":even.trim();
+        public  void setVille(String even) {
+            this.ville = even==null?"":even.trim();
         }
 
     public String getAnnee() {
